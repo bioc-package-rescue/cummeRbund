@@ -813,7 +813,7 @@ setMethod("getSigTable",signature(object="CuffSet"),.getSigTable)
 	
 	p<- p + stat_sum(aes(fill=..n..),color="black",size=0.3, geom="tile") + scale_fill_continuous(low="white",high="green") + expand_limits(fill=0)
 	
-	p<- p + stat_sum(aes(label=..n..),geom="text",size=6,show_guide=FALSE)
+	p<- p + stat_sum(aes(label=..n..),geom="text",size=6,show.legend=FALSE)
 	
 	#p <- p + geom_tile(aes(fill=..n..))
 	
@@ -827,7 +827,7 @@ setMethod("sigMatrix",signature(object="CuffSet"),.sigMatrix)
 .dispersionPlot<-function(object){
 	dat<-varModel(object)
 	p<-ggplot(dat)
-	p<-p + geom_point(aes(x=compatible_count_mean,y=compatible_count_var,color=condition),alpha=0.3,size=0.8) + geom_line(aes(x=compatible_count_mean,y=fitted_var),lwd=0.5,color="black") + facet_wrap('condition') +scale_y_log10() + scale_x_log10() + theme_bw() + guides(color=FALSE)
+	p<-p + geom_point(aes(x=compatible_count_mean,y=compatible_count_var,color=condition),alpha=0.3,size=0.8) + geom_line(aes(x=compatible_count_mean,y=fitted_var),lwd=0.5,color="black") + facet_wrap('condition') +scale_y_log10() + scale_x_log10() + theme_bw() + guides(color="none")
 	p
 }
 
